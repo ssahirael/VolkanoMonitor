@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- ===== BACKGROUND GRADIENT ===== -->
+    <Color x:Key="BgDark">#1B0B3B</Color>
+    <Color x:Key="BgMid">#2D0F6F</Color>
+    <Color x:Key="BgAccent">#3A0CA3</Color>
+
+    <!-- ===== GLASS PANEL ===== -->
+    <Color x:Key="GlassFill">#12FFFFFF</Color>
+    <Color x:Key="GlassBorder">#26FFFFFF</Color>
+    <Color x:Key="GlassBorderBright">#40FFFFFF</Color>
+
+    <!-- ===== ACCENT COLORS ===== -->
+    <Color x:Key="AccentMagenta">#FF2E9F</Color>
+    <Color x:Key="AccentMagentaDark">#C61C8B</Color>
+    <Color x:Key="AccentPurple">#7B2FF7</Color>
+    <Color x:Key="AccentPurpleLight">#9D4EDD</Color>
+    <Color x:Key="AccentCyan">#4CC9F0</Color>
+    <Color x:Key="AccentBlue">#4361EE</Color>
+
+    <!-- ===== TEXT COLORS ===== -->
+    <Color x:Key="TextPrimary">#FFFFFF</Color>
+    <Color x:Key="TextSecondary">#B9A7D9</Color>
+    <Color x:Key="TextMuted">#7B6FAA</Color>
+
+    <!-- ===== STATUS COLORS ===== -->
+    <Color x:Key="StatusNormal">#3DDC97</Color>
+    <Color x:Key="StatusWaspada">#FFD166</Color>
+    <Color x:Key="StatusSiaga">#FF9F1C</Color>
+    <Color x:Key="StatusAwas">#FF2E9F</Color>
+
+    <!-- ===== SIDEBAR ===== -->
+    <Color x:Key="SidebarBg">#0D0826</Color>
+    <Color x:Key="SidebarActive">#FF2E9F</Color>
+    <Color x:Key="SidebarInactive">#B9A7D9</Color>
+
+    <!-- ===== BRUSH: Background Gradient ===== -->
+    <LinearGradientBrush x:Key="BgGradientBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#1B0B3B" Offset="0"/>
+        <GradientStop Color="#2D0F6F" Offset="0.45"/>
+        <GradientStop Color="#3A0CA3" Offset="0.75"/>
+        <GradientStop Color="#C61C8B" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- ===== BRUSH: Button Gradient ===== -->
+    <LinearGradientBrush x:Key="BtnMagentaBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#FF2E9F" Offset="0"/>
+        <GradientStop Color="#7B2FF7" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- ===== BRUSH: Sidebar Active Item ===== -->
+    <LinearGradientBrush x:Key="SidebarActiveBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientStop Color="#FF2E9F" Offset="0"/>
+        <GradientStop Color="#C61C8B" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- ===== BRUSH: Chart Glow Line ===== -->
+    <LinearGradientBrush x:Key="ChartCyanBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#4CC9F0" Offset="0"/>
+        <GradientStop Color="#1A4CC9F0" Offset="1"/>
+    </LinearGradientBrush>
+
+</ResourceDictionary>

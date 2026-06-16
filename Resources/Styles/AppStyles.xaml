@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:local="clr-namespace:VolcanoMonitor">
+
+    <!-- ===== GLASS CARD BORDER ===== -->
+    <Style x:Key="GlassCard" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="#12FFFFFF"/>
+        <Setter Property="Stroke" Value="#26FFFFFF"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 20"/>
+        <Setter Property="Padding" Value="20"/>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="#40FF2E9F" Offset="0,4" Radius="20" Opacity="0.25"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===== GLASS CARD (smaller radius) ===== -->
+    <Style x:Key="GlassCardSm" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="#12FFFFFF"/>
+        <Setter Property="Stroke" Value="#26FFFFFF"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 14"/>
+        <Setter Property="Padding" Value="14"/>
+    </Style>
+
+    <!-- ===== HERO GLASS CARD ===== -->
+    <Style x:Key="HeroCard" TargetType="Border">
+        <Setter Property="StrokeShape" Value="RoundRectangle 24"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="Stroke" Value="#40FFFFFF"/>
+        <Setter Property="Padding" Value="24"/>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="#80FF2E9F" Offset="0,8" Radius="32" Opacity="0.4"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===== BUTTON MAGENTA ===== -->
+    <Style x:Key="BtnMagenta" TargetType="Button">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="BackgroundColor" Value="#FF2E9F"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="CornerRadius" Value="24"/>
+        <Setter Property="Padding" Value="20,10"/>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="#FF2E9F" Offset="0,4" Radius="12" Opacity="0.5"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- ===== BUTTON GHOST ===== -->
+    <Style x:Key="BtnGhost" TargetType="Button">
+        <Setter Property="TextColor" Value="#B9A7D9"/>
+        <Setter Property="BackgroundColor" Value="#12FFFFFF"/>
+        <Setter Property="BorderColor" Value="#26FFFFFF"/>
+        <Setter Property="BorderWidth" Value="1"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="Padding" Value="16,8"/>
+    </Style>
+
+    <!-- ===== LABEL: Title ===== -->
+    <Style x:Key="LblTitle" TargetType="Label">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
+    <!-- ===== LABEL: Section Header ===== -->
+    <Style x:Key="LblSection" TargetType="Label">
+        <Setter Property="TextColor" Value="#B9A7D9"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="CharacterSpacing" Value="2"/>
+    </Style>
+
+    <!-- ===== LABEL: Value Big ===== -->
+    <Style x:Key="LblValueBig" TargetType="Label">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontSize" Value="32"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
+    <!-- ===== LABEL: Secondary ===== -->
+    <Style x:Key="LblSecondary" TargetType="Label">
+        <Setter Property="TextColor" Value="#B9A7D9"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <!-- ===== ENTRY GLASS ===== -->
+    <Style x:Key="EntryGlass" TargetType="Entry">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="PlaceholderColor" Value="#7B6FAA"/>
+        <Setter Property="BackgroundColor" Value="#12FFFFFF"/>
+    </Style>
+
+    <!-- ===== GLOBAL DEFAULTS ===== -->
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="FontFamily" Value="PoppinsRegular"/>
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="PlaceholderColor" Value="#7B6FAA"/>
+        <Setter Property="FontFamily" Value="PoppinsRegular"/>
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="FontFamily" Value="PoppinsMedium"/>
+    </Style>
+
+    <Style TargetType="Editor">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="PlaceholderColor" Value="#7B6FAA"/>
+        <Setter Property="BackgroundColor" Value="#12FFFFFF"/>
+        <Setter Property="FontFamily" Value="PoppinsRegular"/>
+    </Style>
+
+    <Style TargetType="Picker">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="TitleColor" Value="#7B6FAA"/>
+        <Setter Property="BackgroundColor" Value="#12FFFFFF"/>
+    </Style>
+
+</ResourceDictionary>
