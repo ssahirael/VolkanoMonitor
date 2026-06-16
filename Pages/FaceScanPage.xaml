@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VolcanoMonitor.Pages.FaceScanPage"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled"
+             BackgroundColor="#1B0B3B">
+
+    <Grid>
+        <!-- Background Gradient -->
+        <Border StrokeThickness="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#1B0B3B" Offset="0"/>
+                    <GradientStop Color="#3A0CA3" Offset="0.6"/>
+                    <GradientStop Color="#C61C8B" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <!-- Centered Card -->
+        <Grid RowDefinitions="*,Auto,*" Padding="24">
+            <VerticalStackLayout Grid.Row="1" Spacing="0" MaximumWidthRequest="420"
+                                 HorizontalOptions="Center">
+
+                <!-- Header Icon & Titles -->
+                <VerticalStackLayout Spacing="6" Margin="0,0,0,28" HorizontalOptions="Center">
+                    <Label x:Name="LabelFaceIcon" Text="👤" FontSize="64" HorizontalOptions="Center"/>
+                    <Label Text="VERIFIKASI WAJAH" FontSize="20" FontAttributes="Bold"
+                           TextColor="White" HorizontalTextAlignment="Center"/>
+                    <Label Text="Pindai wajah untuk keamanan otentikasi sesi" FontSize="12"
+                           TextColor="#B9A7D9" HorizontalTextAlignment="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Glass Card -->
+                <Border Style="{StaticResource GlassCard}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#1AFFFFFF" Offset="0"/>
+                            <GradientStop Color="#08FFFFFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    
+                    <VerticalStackLayout Spacing="20">
+                        <Label Text="STATUS PEMINDAIAN" Style="{StaticResource LblSection}"
+                               HorizontalTextAlignment="Center" Margin="0,0,0,4"/>
+
+                        <!-- Status text -->
+                        <Label x:Name="LabelStatus" Text="Menunggu pemindaian dimulai..."
+                               TextColor="White" FontSize="13" HorizontalTextAlignment="Center"
+                               FontAttributes="Italic"/>
+
+                        <!-- Progress Bar & Percentage -->
+                        <VerticalStackLayout Spacing="8">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Text="PROGRESS VERIFIKASI" Style="{StaticResource LblSection}" VerticalOptions="Center"/>
+                                <Label x:Name="LabelPercent" Grid.Column="1" Text="0%"
+                                       TextColor="#FF2E9F" FontSize="12" FontAttributes="Bold" VerticalOptions="Center"/>
+                            </Grid>
+                            
+                            <ProgressBar x:Name="ProgressScan" Progress="0" ProgressColor="#FF2E9F" HeightRequest="8"/>
+                        </VerticalStackLayout>
+
+                        <!-- Scan Button -->
+                        <Button x:Name="BtnScan" Text="MULAI VERIFIKASI" Clicked="OnStartScan"
+                                Style="{StaticResource BtnMagenta}" HeightRequest="48" Margin="0,8,0,0"/>
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

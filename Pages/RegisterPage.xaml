@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VolcanoMonitor.Pages.RegisterPage"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled"
+             BackgroundColor="#1B0B3B">
+    <Grid>
+        <Border StrokeThickness="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#1B0B3B" Offset="0"/>
+                    <GradientStop Color="#3A0CA3" Offset="0.6"/>
+                    <GradientStop Color="#C61C8B" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <ScrollView>
+            <Grid RowDefinitions="*,Auto,*" Padding="24">
+                <VerticalStackLayout Grid.Row="1" Spacing="0" MaximumWidthRequest="420"
+                                     HorizontalOptions="Center">
+                    <VerticalStackLayout Spacing="6" Margin="0,0,0,28" HorizontalOptions="Center">
+                        <Label Text="🌋" FontSize="44" HorizontalOptions="Center"/>
+                        <Label Text="DAFTAR AKUN BARU" FontSize="20" FontAttributes="Bold"
+                               TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Label Text="Buat akun untuk mengakses sistem" FontSize="12"
+                               TextColor="#B9A7D9" HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+
+                    <Border Style="{StaticResource GlassCard}">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#1AFFFFFF" Offset="0"/>
+                                <GradientStop Color="#08FFFFFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <VerticalStackLayout Spacing="14">
+                            <Label Text="DATA AKUN" Style="{StaticResource LblSection}"
+                                   HorizontalTextAlignment="Center" Margin="0,0,0,6"/>
+
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="NAMA LENGKAP" Style="{StaticResource LblSection}"/>
+                                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#18FFFFFF"
+                                        Stroke="#26FFFFFF" StrokeThickness="1" Padding="14,12">
+                                    <Entry x:Name="EntryNama" Placeholder="Nama lengkap"
+                                           PlaceholderColor="#7B6FAA" TextColor="White" BackgroundColor="Transparent"/>
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="EMAIL" Style="{StaticResource LblSection}"/>
+                                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#18FFFFFF"
+                                        Stroke="#26FFFFFF" StrokeThickness="1" Padding="14,12">
+                                    <Entry x:Name="EntryEmail" Placeholder="user@email.com"
+                                           Keyboard="Email" PlaceholderColor="#7B6FAA"
+                                           TextColor="White" BackgroundColor="Transparent"/>
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="KATA SANDI" Style="{StaticResource LblSection}"/>
+                                <Border StrokeShape="RoundRectangle 12" BackgroundColor="#18FFFFFF"
+                                        Stroke="#26FFFFFF" StrokeThickness="1" Padding="14,12">
+                                    <Entry x:Name="EntryPassword" Placeholder="Kata sandi"
+                                           IsPassword="True" PlaceholderColor="#7B6FAA"
+                                           TextColor="White" BackgroundColor="Transparent"/>
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <Label Text="PILIH PERAN" Style="{StaticResource LblSection}" Margin="0,4,0,0"/>
+                            <HorizontalStackLayout Spacing="16">
+                                <RadioButton x:Name="RadioAdmin" Content="Admin / Petugas"
+                                             Value="admin" TextColor="White"
+                                             GroupName="RoleGroup" CheckedChanged="OnRoleChanged"/>
+                                <RadioButton x:Name="RadioUser" Content="Warga Sipil"
+                                             Value="user" IsChecked="True" TextColor="White"
+                                             GroupName="RoleGroup" CheckedChanged="OnRoleChanged"/>
+                            </HorizontalStackLayout>
+                            <Label x:Name="LabelRoleInfo" Text="Peran: Warga Sipil"
+                                   TextColor="#FF2E9F" FontSize="11"/>
+
+                            <Button Text="DAFTAR &amp; VERIFIKASI WAJAH"
+                                    Clicked="OnRegisterClicked"
+                                    Style="{StaticResource BtnMagenta}"
+                                    Margin="0,8,0,0" HeightRequest="48"/>
+                            <Button Text="Sudah punya akun? Masuk"
+                                    Clicked="OnGoToLogin"
+                                    BackgroundColor="Transparent" TextColor="#B9A7D9" FontSize="12" Padding="0"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

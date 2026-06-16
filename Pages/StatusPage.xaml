@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VolcanoMonitor.Pages.StatusPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#1B0B3B">
+
+    <Grid>
+        <!-- BG Gradient -->
+        <Border StrokeThickness="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#1B0B3B" Offset="0"/>
+                    <GradientStop Color="#2D0F6F" Offset="0.5"/>
+                    <GradientStop Color="#3A0CA3" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+
+        <ScrollView>
+            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" RowSpacing="16" Padding="24,20">
+
+                <!-- ===== TOP BAR ===== -->
+                <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,4">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="REAL-TIME MONITORING" Style="{StaticResource LblSection}"
+                               TextColor="#FF2E9F"/>
+                        <Label x:Name="LblGreeting" Text="Halo, Pengguna 👋"
+                               FontSize="24" FontAttributes="Bold" TextColor="White"/>
+                        <Label Text="Selamat datang kembali di sistem pemantauan"
+                               FontSize="12" TextColor="#B9A7D9"/>
+                    </VerticalStackLayout>
+                    <HorizontalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="12">
+                        <Ellipse WidthRequest="10" HeightRequest="10" Fill="#3DDC97" VerticalOptions="Center"/>
+                        <Label Text="LIVE" TextColor="#3DDC97" FontSize="11"
+                               FontAttributes="Bold" VerticalOptions="Center"/>
+                        <Border StrokeShape="RoundRectangle 20" BackgroundColor="#18FFFFFF"
+                                Stroke="#26FFFFFF" StrokeThickness="1" Padding="12,6">
+                            <Label x:Name="LblStatCount" Text="4 Gunung" FontSize="12"
+                                   TextColor="White" FontAttributes="Bold"/>
+                        </Border>
+                    </HorizontalStackLayout>
+                </Grid>
+
+                <!-- ===== HERO CARD ===== -->
+                <Border x:Name="HeroCard" Grid.Row="1" Style="{StaticResource HeroCard}">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#9D1A6E" Offset="0"/>
+                            <GradientStop Color="#6B1FB5" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnHeroCardTapped"/>
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+                        <VerticalStackLayout Grid.Column="0" Spacing="8" VerticalOptions="Center">
+                            <HorizontalStackLayout Spacing="8">
+                                <Border StrokeShape="RoundRectangle 8" BackgroundColor="#40FFFFFF"
+                                        StrokeThickness="0" Padding="8,4">
+                                    <Label x:Name="LblHeroLevel" Text="LEVEL IV — AWAS"
+                                           FontSize="10" FontAttributes="Bold" TextColor="White"/>
+                                </Border>
+                            </HorizontalStackLayout>
+                            <Label x:Name="LblHeroTitle" Text="Status Darurat Aktif"
+                                   FontSize="22" FontAttributes="Bold" TextColor="White"/>
+                            <Label x:Name="LblHeroName" Text="Gunung Anak Krakatau"
+                                   FontSize="14" TextColor="#FFB3E0"/>
+                            <Label x:Name="LblHeroDesc"
+                                   Text="Aktivitas erupsi tinggi terdeteksi. SO₂ melebihi ambang batas kritis."
+                                   FontSize="12" TextColor="#E8C7FF" LineBreakMode="WordWrap"/>
+                            <Button Text="LIHAT DETAIL →" Clicked="OnHeroDetailClicked"
+                                    BackgroundColor="#FF2E9F" TextColor="White"
+                                    FontAttributes="Bold" FontSize="12" CornerRadius="20"
+                                    Padding="16,8" HorizontalOptions="Start" Margin="0,6,0,0"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="🌋" FontSize="72"
+                               VerticalOptions="Center" Opacity="0.8"/>
+                    </Grid>
+                </Border>
+
+                <!-- ===== STAT CARDS (4 sensor summary) ===== -->
+                <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*" ColumnSpacing="12">
+                    <!-- SO2 -->
+                    <Border Grid.Column="0" Style="{StaticResource GlassCardSm}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="☁️" FontSize="22"/>
+                            <Label Text="SO₂" Style="{StaticResource LblSection}" TextColor="#B9A7D9"/>
+                            <Label x:Name="LblSO2Val" Text="—" FontSize="24"
+                                   FontAttributes="Bold" TextColor="White"/>
+                            <Label Text="ppm" TextColor="#B9A7D9" FontSize="10"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <!-- CO2 -->
+                    <Border Grid.Column="1" Style="{StaticResource GlassCardSm}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="💨" FontSize="22"/>
+                            <Label Text="CO₂" Style="{StaticResource LblSection}" TextColor="#B9A7D9"/>
+                            <Label x:Name="LblCO2Val" Text="—" FontSize="24"
+                                   FontAttributes="Bold" TextColor="White"/>
+                            <Label Text="ppm" TextColor="#B9A7D9" FontSize="10"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <!-- Temperature -->
+                    <Border Grid.Column="2" Style="{StaticResource GlassCardSm}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="🌡️" FontSize="22"/>
+                            <Label Text="SUHU" Style="{StaticResource LblSection}" TextColor="#B9A7D9"/>
+                            <Label x:Name="LblTempVal" Text="—" FontSize="24"
+                                   FontAttributes="Bold" TextColor="White"/>
+                            <Label Text="°C kawah" TextColor="#B9A7D9" FontSize="10"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <!-- Seismic -->
+                    <Border Grid.Column="3" Style="{StaticResource GlassCardSm}">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="📡" FontSize="22"/>
+                            <Label Text="SEISMIK" Style="{StaticResource LblSection}" TextColor="#B9A7D9"/>
+                            <Label x:Name="LblSeisVal" Text="—" FontSize="24"
+                                   FontAttributes="Bold" TextColor="White"/>
+                            <Label Text="indeks" TextColor="#B9A7D9" FontSize="10"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- ===== GUNUNG PALING AKTIF ===== -->
+                <Border Grid.Row="3" Style="{StaticResource GlassCard}">
+                    <VerticalStackLayout Spacing="12">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="GUNUNG PALING AKTIF" Style="{StaticResource LblSection}"
+                                       TextColor="#FF2E9F"/>
+                                <Label Text="Status Terkini Semua Stasiun"
+                                       FontSize="16" FontAttributes="Bold" TextColor="White"/>
+                            </VerticalStackLayout>
+                            <Label Grid.Column="1" x:Name="LblTotalCount" Text="4 stasiun"
+                                   FontSize="12" TextColor="#B9A7D9" VerticalOptions="End"/>
+                        </Grid>
+
+                        <!-- Filter pills -->
+                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                            <HorizontalStackLayout Spacing="8">
+                                <Border x:Name="PillAll" StrokeShape="RoundRectangle 16"
+                                        BackgroundColor="#FF2E9F" StrokeThickness="0" Padding="14,6">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnFilterTapped" CommandParameter="ALL"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="Semua" FontSize="11" TextColor="White" FontAttributes="Bold"/>
+                                </Border>
+                                <Border x:Name="PillNormal" StrokeShape="RoundRectangle 16"
+                                        BackgroundColor="#18FFFFFF" Stroke="#26FFFFFF" StrokeThickness="1" Padding="14,6">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnFilterTapped" CommandParameter="NORMAL"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="Normal" FontSize="11" TextColor="#B9A7D9"/>
+                                </Border>
+                                <Border x:Name="PillWaspada" StrokeShape="RoundRectangle 16"
+                                        BackgroundColor="#18FFFFFF" Stroke="#26FFFFFF" StrokeThickness="1" Padding="14,6">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnFilterTapped" CommandParameter="WASPADA"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="Waspada" FontSize="11" TextColor="#B9A7D9"/>
+                                </Border>
+                                <Border x:Name="PillSiaga" StrokeShape="RoundRectangle 16"
+                                        BackgroundColor="#18FFFFFF" Stroke="#26FFFFFF" StrokeThickness="1" Padding="14,6">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnFilterTapped" CommandParameter="SIAGA"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="Siaga" FontSize="11" TextColor="#B9A7D9"/>
+                                </Border>
+                                <Border x:Name="PillAwas" StrokeShape="RoundRectangle 16"
+                                        BackgroundColor="#18FFFFFF" Stroke="#26FFFFFF" StrokeThickness="1" Padding="14,6">
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnFilterTapped" CommandParameter="AWAS"/>
+                                    </Border.GestureRecognizers>
+                                    <Label Text="Awas" FontSize="11" TextColor="#B9A7D9"/>
+                                </Border>
+                            </HorizontalStackLayout>
+                        </ScrollView>
+
+                        <!-- Volcano Cards List -->
+                        <VerticalStackLayout x:Name="EventListContainer" Spacing="10"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- ===== MAP TEASER ===== -->
+                <Border Grid.Row="4" Style="{StaticResource GlassCardSm}" Margin="0,0,0,32">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnKetukUntukPeta"/>
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="PETA GEOSPASIAL" Style="{StaticResource LblSection}"
+                                   TextColor="#4CC9F0"/>
+                            <Label Text="Lihat Posisi Semua Gunung" FontSize="15"
+                                   FontAttributes="Bold" TextColor="White"/>
+                            <Label Text="Peta interaktif dengan marker status real-time"
+                                   FontSize="12" TextColor="#B9A7D9"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="🗺️ →" FontSize="32" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

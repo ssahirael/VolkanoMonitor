@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VolcanoMonitor.Pages.NotifikasiPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#1B0B3B">
+    <Grid>
+        <Border StrokeThickness="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#1B0B3B" Offset="0"/>
+                    <GradientStop Color="#2D0F6F" Offset="0.6"/>
+                    <GradientStop Color="#3A0CA3" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <ScrollView>
+            <Grid RowDefinitions="Auto,Auto,*" RowSpacing="16" Padding="24,20">
+
+                <!-- Header -->
+                <VerticalStackLayout Grid.Row="0" Spacing="2">
+                    <Label Text="PERINGATAN DINI" Style="{StaticResource LblSection}" TextColor="#FF2E9F"/>
+                    <Label Text="Sistem Notifikasi" FontSize="22" FontAttributes="Bold" TextColor="White"/>
+                    <Label Text="Log peringatan vulkanik terkini dari seluruh stasiun"
+                           FontSize="12" TextColor="#B9A7D9"/>
+                </VerticalStackLayout>
+
+                <!-- Admin Console -->
+                <Border x:Name="AdminConsole" Grid.Row="1" Style="{StaticResource GlassCard}"
+                        IsVisible="False">
+                    <Border.Stroke>
+                        <SolidColorBrush Color="#FF2E9F"/>
+                    </Border.Stroke>
+                    <VerticalStackLayout Spacing="12">
+                        <HorizontalStackLayout Spacing="8">
+                            <Label Text="🔴" FontSize="16"/>
+                            <Label Text="KONSOL ADMIN — KIRIM PERINGATAN BARU"
+                                   Style="{StaticResource LblSection}" TextColor="#FF2E9F"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="PILIH GUNUNG" Style="{StaticResource LblSection}"/>
+                            <Border StrokeShape="RoundRectangle 10" BackgroundColor="#18FFFFFF"
+                                    Stroke="#26FFFFFF" StrokeThickness="1" Padding="4,0">
+                                <Picker x:Name="PickerVolcano" Title="Pilih gunung..."
+                                        TextColor="White" TitleColor="#7B6FAA"
+                                        BackgroundColor="Transparent"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="TINGKAT SIAGA" Style="{StaticResource LblSection}"/>
+                            <Border StrokeShape="RoundRectangle 10" BackgroundColor="#18FFFFFF"
+                                    Stroke="#26FFFFFF" StrokeThickness="1" Padding="4,0">
+                                <Picker x:Name="PickerLevel" Title="Pilih level..." TextColor="White"
+                                        TitleColor="#7B6FAA" BackgroundColor="Transparent">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>NORMAL</x:String>
+                                            <x:String>WASPADA</x:String>
+                                            <x:String>SIAGA</x:String>
+                                            <x:String>AWAS</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="PESAN PERINGATAN" Style="{StaticResource LblSection}"/>
+                            <Border StrokeShape="RoundRectangle 10" BackgroundColor="#18FFFFFF"
+                                    Stroke="#26FFFFFF" StrokeThickness="1" Padding="10">
+                                <Editor x:Name="TxtAlertMessage"
+                                        Placeholder="Tulis pesan darurat di sini..."
+                                        PlaceholderColor="#7B6FAA" TextColor="White"
+                                        BackgroundColor="Transparent" HeightRequest="80"/>
+                            </Border>
+                        </VerticalStackLayout>
+
+                        <Button Text="📢  PUBLIKASIKAN PERINGATAN"
+                                Clicked="OnPostAlertClicked"
+                                Style="{StaticResource BtnMagenta}" HeightRequest="46"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Alerts List -->
+                <VerticalStackLayout Grid.Row="2" Spacing="10" Margin="0,0,0,32">
+                    <Label Text="LOG PERINGATAN TERBARU" Style="{StaticResource LblSection}"
+                           TextColor="#B9A7D9" Margin="0,0,0,4"/>
+                    <VerticalStackLayout x:Name="AlertsListContainer" Spacing="10"/>
+                </VerticalStackLayout>
+
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VolcanoMonitor.Pages.MapPage"
+             BackgroundColor="#000000">
+
+    <Grid RowDefinitions="Auto,*,Auto" RowSpacing="0">
+
+        <!-- HEADER -->
+        <Border Grid.Row="0" BackgroundColor="#050505" Padding="20,12" StrokeThickness="1" Stroke="#222">
+            <Grid ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="GEOPASIAL · MAP" FontSize="9" CharacterSpacing="2" FontAttributes="Bold" TextColor="#E10600"/>
+                    <Label Text="PETA MULTI-SUMBER" FontSize="20" FontAttributes="Bold" TextColor="White" Margin="0,-2,0,0"/>
+                </VerticalStackLayout>
+
+                <HorizontalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="10">
+                    <Label x:Name="LblMapSummary" Text="4 AKTIF • 1 KRITIS" TextColor="#AAA" FontSize="11" FontAttributes="Bold" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- MAP: WebView pakai OpenStreetMap/Leaflet (tidak butuh API key) -->
+        <Grid Grid.Row="1">
+            <WebView x:Name="MapWebView" BackgroundColor="#0A0A0A" HeightRequest="500" VerticalOptions="FillAndExpand"/>
+
+            <!-- Loading overlay -->
+            <VerticalStackLayout x:Name="MapLoadingOverlay"
+                                 VerticalOptions="Center" HorizontalOptions="Center" Spacing="16">
+                <ActivityIndicator IsRunning="True" Color="#E10600" WidthRequest="40" HeightRequest="40"/>
+                <Label Text="MEMUAT PETA..." TextColor="#888" FontSize="11" FontAttributes="Bold" CharacterSpacing="2"/>
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- BOTTOM: Volcano Cards -->
+        <Border Grid.Row="2" BackgroundColor="#0A0A0A" Padding="12" StrokeThickness="1" Stroke="#222">
+            <VerticalStackLayout Spacing="8">
+                <Label Text="DAFTAR GUNUNG BERAPI" TextColor="Gray" FontSize="10" CharacterSpacing="1" FontAttributes="Bold" Margin="4,0,0,0"/>
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                    <HorizontalStackLayout x:Name="VolcanoCardsContainer" Spacing="10">
+                        <!-- Populated dynamically -->
+                    </HorizontalStackLayout>
+                </ScrollView>
+            </VerticalStackLayout>
+        </Border>
+
+    </Grid>
+</ContentPage>
