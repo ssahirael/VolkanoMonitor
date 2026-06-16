@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="VolcanoMonitor.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:VolcanoMonitor.Pages"
+       FlyoutBehavior="Locked"
+       FlyoutWidth="220"
+       FlyoutBackgroundColor="#0D0826"
+       Shell.NavBarIsVisible="False"
+       Shell.TabBarIsVisible="False">
+
+    <!-- ===== SIDEBAR HEADER (Logo) ===== -->
+    <Shell.FlyoutHeader>
+        <Grid Padding="20,32,20,16" BackgroundColor="#0D0826">
+            <VerticalStackLayout Spacing="4">
+                <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                    <Label Text="🌋" FontSize="28" VerticalOptions="Center"/>
+                    <VerticalStackLayout VerticalOptions="Center">
+                        <Label Text="VULKANO" FontSize="18" FontAttributes="Bold"
+                               TextColor="White"/>
+                        <Label Text="Monitor System" FontSize="10" TextColor="#B9A7D9"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+                <!-- Divider -->
+                <BoxView HeightRequest="1" Color="#1AFFFFFF" Margin="0,12,0,0"/>
+            </VerticalStackLayout>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <!-- ===== SIDEBAR FOOTER (User Profile Card) ===== -->
+    <Shell.FlyoutFooter>
+        <Border Margin="12,0,12,20" Style="{StaticResource GlassCardSm}">
+            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                <!-- Avatar -->
+                <Border Grid.Column="0" WidthRequest="36" HeightRequest="36"
+                        StrokeShape="RoundRectangle 18" BackgroundColor="#FF2E9F"
+                        StrokeThickness="0">
+                    <Label x:Name="LblAvatarInitial" Text="U" FontSize="16"
+                           FontAttributes="Bold" TextColor="White"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Border>
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="1">
+                    <Label x:Name="LblSidebarUserName" Text="Pengguna" FontSize="12"
+                           FontAttributes="Bold" TextColor="White"/>
+                    <Label x:Name="LblSidebarUserRole" Text="user" FontSize="10"
+                           TextColor="#B9A7D9"/>
+                </VerticalStackLayout>
+            </Grid>
+        </Border>
+    </Shell.FlyoutFooter>
+
+    <!-- ===== FLYOUT ITEM TEMPLATE ===== -->
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid Padding="12,4" HeightRequest="48">
+                <Border x:Name="ActivePill" BackgroundColor="Transparent"
+                        StrokeThickness="0" StrokeShape="RoundRectangle 12">
+                    <HorizontalStackLayout Spacing="12" Padding="12,0" VerticalOptions="Center">
+                        <Label Text="{Binding Icon}" FontSize="18" VerticalOptions="Center"/>
+                        <Label Text="{Binding Title}" FontSize="13" VerticalOptions="Center"
+                               TextColor="#B9A7D9"/>
+                    </HorizontalStackLayout>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <!-- ===== PAGES (Non-Tab: Auth flow) ===== -->
+    <ShellContent Route="LoginPage"    ContentTemplate="{DataTemplate pages:LoginPage}"    Shell.FlyoutItemIsVisible="False"/>
+    <ShellContent Route="RegisterPage" ContentTemplate="{DataTemplate pages:RegisterPage}" Shell.FlyoutItemIsVisible="False"/>
+    <ShellContent Route="FaceScanPage" ContentTemplate="{DataTemplate pages:FaceScanPage}" Shell.FlyoutItemIsVisible="False"/>
+
+    <!-- ===== MAIN NAV ITEMS ===== -->
+    <FlyoutItem Title="Dashboard" Icon="&#128200;" Route="StatusPage">
+        <ShellContent Route="StatusPage" ContentTemplate="{DataTemplate pages:StatusPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Peta Vulkanik" Icon="&#127759;" Route="MapPage">
+        <ShellContent Route="MapPage" ContentTemplate="{DataTemplate pages:MapPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Statistik &amp; AI" Icon="&#128201;" Route="JelajahPage">
+        <ShellContent Route="JelajahPage" ContentTemplate="{DataTemplate pages:JelajahPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Notifikasi" Icon="&#128276;" Route="NotifikasiPage">
+        <ShellContent Route="NotifikasiPage" ContentTemplate="{DataTemplate pages:NotifikasiPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Pengaturan" Icon="&#9881;" Route="PengaturanPage">
+        <ShellContent Route="PengaturanPage" ContentTemplate="{DataTemplate pages:PengaturanPage}"/>
+    </FlyoutItem>
+
+</Shell>

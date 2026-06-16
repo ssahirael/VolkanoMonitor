@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<!-- Upgrade ke .NET 9 agar sesuai workload maui-windows 9.0.111 yang terinstall -->
+		<TargetFrameworks>net9.0-android;net9.0-windows10.0.19041.0</TargetFrameworks>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>VolcanoMonitor</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<ApplicationTitle>VolcanoMonitor</ApplicationTitle>
+		<ApplicationId>com.companyname.volcanomonitor</ApplicationId>
+		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<AndroidMinSdkVersion>21</AndroidMinSdkVersion>
+		<!-- Jalankan tanpa MSIX packaging (unpackaged Win32 mode) -->
+		<WindowsPackageType>None</WindowsPackageType>
+		<WindowsAppSDKDeploymentManagerInitialize>false</WindowsAppSDKDeploymentManagerInitialize>
+		<!-- Suppress MA002 warning tentang implicit package references -->
+		<SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- SQLite -->
+		<PackageReference Include="FaceAiSharp" Version="0.6.35" />
+		<PackageReference Include="FaceAiSharp.Bundle" Version="0.6.35" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.10" />
+
+		<!-- SkiaSharp - versi 3.x untuk MAUI 9 -->
+		<PackageReference Include="SkiaSharp" Version="3.116.1" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="3.116.1" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Core" Version="3.116.1" />
+
+		<!-- CommunityToolkit untuk MAUI 9 -->
+		<!-- Microsoft.Maui.Controls.Maps dihapus: MapPage kini pakai WebView+Leaflet (tidak butuh API key) -->
+		<PackageReference Include="CommunityToolkit.Maui" Version="10.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<MauiFont Include="Resources\Fonts\*" />
+		<MauiImage Include="Resources\Images\*" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#0D0D1A" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#0D0D1A" />
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+</Project>
